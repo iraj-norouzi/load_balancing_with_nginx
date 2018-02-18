@@ -1,0 +1,28 @@
+1-apt-get install nginx curl siege
+2-nano /etc/nginx/sites-available/default
+
+upstream backend {
+	round_robin;|least_conn;|ip_hash;
+        server 192.168.1.12 backup|max_fails=3 fail_timeout=15s| weight=1;
+        server 192.168.1.13;
+
+
+}
+server {
+listen 80;
+
+        location /{
+
+
+                proxy_pass http://backend;
+
+
+        }
+
+
+
+
+}
+
+systemctl enable nginx
+systemctl restart nginx
