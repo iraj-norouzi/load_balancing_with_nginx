@@ -3,5 +3,5 @@ http://blog.remarkablelabs.com/2012/11/benchmarking-and-load-testing-with-siege
 c=user count
 t=time
 b=nowait-1secwait
-
+-f=file-site.txt
 siege -b  -t12S  http://192.168.1.10
